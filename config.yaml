@@ -1,0 +1,44 @@
+
+model_params: 
+  in_channels: 3
+  latent_dim: 128
+  
+
+
+data_params:
+  train_dir: "data/train"
+  val_dir: "data/valid"
+  train_batch_size: 4
+  val_batch_size:  4
+  image_size: 64
+  num_workers: 4
+
+
+
+train_params:
+  train: True 
+  #gpus: [1]
+  max_epochs: 2000
+  lr: 0.01
+  weight_decay: 0.0
+  #scheduler_gamma: 0.95
+  #kld_weight: 0.00025
+  manual_seed: 1
+  model_load_path: "params/best_model.th"
+  model_save_path: "params/best_model.th"
+  
+
+latent_vec:
+  save: True
+  save_path: "params/latent_vec.npz"
+
+
+
+t-SNE: True
+# tc to generate 
+
+logging_params:
+  
+  save_dir: "logs/"
+  name: "Autoencoder"
+
