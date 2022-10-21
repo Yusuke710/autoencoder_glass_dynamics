@@ -2,35 +2,41 @@
 model_params: 
   in_channels: 3
   latent_dim: 128
+  hidden_dims: [32, 64, 128, 256, 512] # , 512, 512, 512] # [32, 64, 128, 256, 512]
   
 
 
 data_params:
-  train_dir: "data/train"
-  val_dir: "data/valid"
-  train_batch_size: 4
-  val_batch_size:  4
+  train_dir: "image_data/train" #"data/train"
+  val_dir: "image_data/valid" #"data/valid"
+  test_dir: "image_data/test" #"data/valid"
+  train_batch_size: 64 # train dataset / batch size needs to be divisible
+  val_batch_size:  64
+  test_batch_size: 1 # don't change it, otherwise the manipulation will not work
   image_size: 64
   num_workers: 4
 
 
 
 train_params:
-  train: True 
+  train: True
   #gpus: [1]
-  max_epochs: 2000
-  lr: 0.01
+  max_epochs: 100
+  lr: 0.0001
   weight_decay: 0.0
   #scheduler_gamma: 0.95
   #kld_weight: 0.00025
   manual_seed: 1
   model_load_path: "params/best_model.th"
-  model_save_path: "params/best_model.th"
+  model_save_path: "params/best_model_image.th"
   
 
 latent_vec:
   save: True
-  save_path: "params/latent_vec.npz"
+  save_path: "params/latent_vecs.npz"
+  tc_src: "tc0"
+  tc_dst: "tc1000"
+  latent_direction_save_dir: "params"
 
 
 
